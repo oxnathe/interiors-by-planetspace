@@ -1,0 +1,597 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+@import "tailwindcss";
+
+:root {
+  font-family: 'Inter', sans-serif;
+  color: #171714;
+  background: #ffffff;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --gold: #a18455;
+  --gold-light: #e2c99e;
+  --black: #0c1014;
+  --ivory: #f7f4ef;
+  --charcoal: #292929;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+body,
+button,
+a {
+  font-family: 'Inter', sans-serif;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+::selection {
+  background: #a18455;
+  color: white;
+}
+
+.font-serif {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.glass-nav {
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.84);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+  box-shadow: 0 8px 32px rgba(25, 20, 12, 0.07);
+}
+
+.nav-link {
+  position: relative;
+  padding: 8px 0;
+  font-size: 12px;
+  color: #44413c;
+  transition: color 180ms ease;
+}
+
+.nav-link::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  background: var(--gold);
+  content: '';
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 180ms ease;
+}
+
+.nav-link:hover {
+  color: var(--gold);
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.gold-button,
+.outline-button {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 22px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.035em;
+  transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.gold-button {
+  border: 1px solid var(--gold);
+  background: var(--gold);
+  color: white;
+}
+
+.gold-button:hover {
+  transform: translateY(-2px);
+  border-color: #8c7048;
+  background: #8c7048;
+}
+
+.outline-button {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: white;
+  background: rgba(255, 255, 255, 0.06);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.outline-button:hover {
+  border-color: var(--gold-light);
+  color: var(--gold-light);
+}
+
+.eyebrow {
+  margin-bottom: 18px;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  line-height: 1.8;
+  text-transform: uppercase;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.12;
+}
+
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.image-frame {
+  position: relative;
+  overflow: hidden;
+  background: #e9e3da;
+}
+
+.image-frame > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.group:hover .image-frame > img,
+.image-frame:hover > img {
+  transform: scale(1.045);
+}
+
+.image-action {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  height: 42px;
+  width: 42px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.76);
+  color: var(--black);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.group:hover .image-action {
+  background: var(--gold);
+  color: white;
+}
+
+.project-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent 65%);
+}
+
+@media (max-width: 640px) {
+  .section-title {
+    letter-spacing: -0.045em;
+  }
+
+  .project-overlay {
+    padding: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Let's Talk — Glossy Champagne Gold */
+.gold-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(255, 239, 207, 0.9);
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, #d5bc91, #a18455 45%, #c4a36d 75%, #8c7048);
+  color: #fff;
+  box-shadow:
+    0 0 0 1px rgba(193, 162, 112, 0.22),
+    0 0 15px rgba(193, 162, 112, 0.4),
+    0 0 30px rgba(193, 162, 112, 0.2),
+    0 5px 14px rgba(74, 54, 27, 0.2),
+    inset 0 1px 1px rgba(255, 255, 255, 0.65);
+  transition: transform 250ms ease, box-shadow 250ms ease, filter 250ms ease;
+  animation: lets-talk-glow 3s ease-in-out infinite;
+}
+
+.gold-button::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.48),
+    rgba(255, 255, 255, 0.14) 28%,
+    transparent 52%,
+    rgba(255, 255, 255, 0.12)
+  );
+}
+
+.gold-button > * {
+  position: relative;
+  z-index: 1;
+}
+
+.gold-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow:
+    0 0 0 2px rgba(193, 162, 112, 0.2),
+    0 0 22px rgba(193, 162, 112, 0.55),
+    0 0 42px rgba(193, 162, 112, 0.28),
+    0 8px 20px rgba(74, 54, 27, 0.22),
+    inset 0 1px 1px rgba(255, 255, 255, 0.75);
+}
+
+.gold-button:active {
+  transform: scale(0.97);
+}
+
+@keyframes lets-talk-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(193, 162, 112, 0.22),
+      0 0 15px rgba(193, 162, 112, 0.4),
+      0 0 30px rgba(193, 162, 112, 0.2),
+      0 5px 14px rgba(74, 54, 27, 0.2),
+      inset 0 1px 1px rgba(255, 255, 255, 0.65);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(235, 216, 181, 0.4),
+      0 0 20px rgba(193, 162, 112, 0.52),
+      0 0 36px rgba(193, 162, 112, 0.27),
+      0 6px 17px rgba(74, 54, 27, 0.22),
+      inset 0 1px 1px rgba(255, 255, 255, 0.75);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gold-button {
+    animation: none;
+  }
+}
+
+
+/* LET'S TALK — MOVING GOLD, BLACK & WHITE GLOSS */
+.gold-button {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  border-radius: 999px !important;
+
+  background: linear-gradient(
+    115deg,
+    #080808 0%,
+    #28231b 14%,
+    #a18455 30%,
+    #f8f5ee 43%,
+    #c5a56f 53%,
+    #171512 70%,
+    #a18455 86%,
+    #080808 100%
+  ) !important;
+  background-size: 250% 100% !important;
+  background-position: 0% 50%;
+
+  color: #fff !important;
+  box-shadow:
+    0 0 0 1px rgba(193, 162, 112, 0.3),
+    0 0 18px rgba(193, 162, 112, 0.4),
+    0 0 36px rgba(193, 162, 112, 0.18),
+    inset 0 1px 1px rgba(255, 255, 255, 0.65);
+
+  animation:
+    lets-talk-metal-flow 6s ease-in-out infinite,
+    lets-talk-metal-glow 3s ease-in-out infinite;
+
+  transition: transform 250ms ease, filter 250ms ease;
+}
+
+/* Moving white glass reflection */
+.gold-button::before {
+  content: "";
+  position: absolute;
+  top: -80%;
+  bottom: -80%;
+  left: -65%;
+  z-index: 0;
+  width: 42%;
+  border-radius: 999px;
+  pointer-events: none;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05) 15%,
+    rgba(255, 255, 255, 0.72) 48%,
+    rgba(255, 255, 255, 0.12) 78%,
+    transparent
+  );
+
+  filter: blur(3px);
+  transform: rotate(20deg);
+  animation: lets-talk-light-sweep 3.8s ease-in-out infinite;
+}
+
+/* Fine glossy highlight along the upper edge */
+.gold-button::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.36),
+    rgba(255, 255, 255, 0.06) 38%,
+    transparent 68%,
+    rgba(0, 0, 0, 0.22)
+  );
+}
+
+.gold-button > * {
+  position: relative;
+  z-index: 1;
+}
+
+.gold-button:hover {
+  transform: translateY(-2px) scale(1.025);
+  filter: brightness(1.14);
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.45),
+    0 0 24px rgba(193, 162, 112, 0.65),
+    0 0 46px rgba(193, 162, 112, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+.gold-button:active {
+  transform: scale(0.98);
+}
+
+@keyframes lets-talk-metal-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes lets-talk-light-sweep {
+  0%, 12% {
+    left: -65%;
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.9;
+  }
+  65% {
+    opacity: 0.65;
+  }
+  88%, 100% {
+    left: 130%;
+    opacity: 0;
+  }
+}
+
+@keyframes lets-talk-metal-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(193, 162, 112, 0.3),
+      0 0 18px rgba(193, 162, 112, 0.4),
+      0 0 36px rgba(193, 162, 112, 0.18),
+      inset 0 1px 1px rgba(255, 255, 255, 0.65);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.4),
+      0 0 24px rgba(193, 162, 112, 0.58),
+      0 0 44px rgba(193, 162, 112, 0.26),
+      inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gold-button,
+  .gold-button::before {
+    animation: none;
+  }
+}
+
+
+/* =====================================================
+   PLANETSPACE — WHATSAPP LUXURY PULSE BEAT
+   Black • Champagne Gold • Caramel • Off-white
+   ===================================================== */
+
+/* Target the existing floating WhatsApp control */
+a[class*="fixed"][href*="wa.me"],
+a[class*="fixed"][href*="whatsapp"],
+a[aria-label*="WhatsApp" i],
+a[title*="WhatsApp" i],
+button[aria-label*="WhatsApp" i] {
+  isolation: isolate;
+  animation: planetspace-wa-beat 2s ease-in-out infinite;
+  box-shadow:
+    0 0 0 3px #f7f1e7,
+    0 0 0 6px #a18455,
+    0 0 0 9px rgba(193, 162, 112, 0.25),
+    0 5px 18px rgba(12, 16, 20, 0.28);
+}
+
+/* Radiating caramel and gold pulse rings */
+a[class*="fixed"][href*="wa.me"]::before,
+a[class*="fixed"][href*="whatsapp"]::before,
+a[aria-label*="WhatsApp" i]::before,
+a[title*="WhatsApp" i]::before,
+button[aria-label*="WhatsApp" i]::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  z-index: -1;
+  border: 2px solid rgba(161, 132, 85, 0.75);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: planetspace-wa-ripple 2s ease-out infinite;
+}
+
+/* Second, softer off-white pulse */
+a[class*="fixed"][href*="wa.me"]::after,
+a[class*="fixed"][href*="whatsapp"]::after,
+a[aria-label*="WhatsApp" i]::after,
+a[title*="WhatsApp" i]::after,
+button[aria-label*="WhatsApp" i]::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  z-index: -1;
+  border: 1px solid rgba(255, 250, 240, 0.9);
+  border-radius: inherit;
+  pointer-events: none;
+  animation: planetspace-wa-ripple 2s ease-out 0.65s infinite;
+}
+
+@keyframes planetspace-wa-beat {
+  0%, 100% {
+    box-shadow:
+      0 0 0 3px #f7f1e7,
+      0 0 0 6px #a18455,
+      0 0 0 9px rgba(193, 162, 112, 0.25),
+      0 5px 18px rgba(12, 16, 20, 0.28);
+  }
+
+  14% {
+    box-shadow:
+      0 0 0 4px #f7f1e7,
+      0 0 0 8px #a18455,
+      0 0 0 12px rgba(193, 162, 112, 0.4),
+      0 0 25px rgba(161, 132, 85, 0.5);
+  }
+
+  28% {
+    box-shadow:
+      0 0 0 3px #f7f1e7,
+      0 0 0 6px #a18455,
+      0 0 0 9px rgba(193, 162, 112, 0.25),
+      0 5px 18px rgba(12, 16, 20, 0.28);
+  }
+
+  42% {
+    box-shadow:
+      0 0 0 4px #171512,
+      0 0 0 7px #c5a675,
+      0 0 0 11px rgba(247, 241, 231, 0.55),
+      0 0 28px rgba(161, 132, 85, 0.45);
+  }
+}
+
+@keyframes planetspace-wa-ripple {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.85;
+  }
+
+  75% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(1.42);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  a[class*="fixed"][href*="wa.me"],
+  a[class*="fixed"][href*="whatsapp"],
+  a[aria-label*="WhatsApp" i],
+  a[title*="WhatsApp" i],
+  button[aria-label*="WhatsApp" i],
+  a[class*="fixed"][href*="wa.me"]::before,
+  a[class*="fixed"][href*="whatsapp"]::before,
+  a[aria-label*="WhatsApp" i]::before,
+  a[title*="WhatsApp" i]::before,
+  button[aria-label*="WhatsApp" i]::before,
+  a[class*="fixed"][href*="wa.me"]::after,
+  a[class*="fixed"][href*="whatsapp"]::after,
+  a[aria-label*="WhatsApp" i]::after,
+  a[title*="WhatsApp" i]::after,
+  button[aria-label*="WhatsApp" i]::after {
+    animation: none;
+  }
+}
+
