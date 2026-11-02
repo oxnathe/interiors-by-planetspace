@@ -55,13 +55,93 @@ const projects = [
   },
 ]
 
-const artisans = [
-  'Carpentry & Woodwork',
-  'Electrical Services',
-  'Plumbing',
-  'Painting & Finishing',
-  'Tiling & Flooring',
-  'Furniture & Upholstery',
+const artisanCategories = [
+  {
+    title: 'Building and Construction Artisans',
+    description: 'Skilled professionals for building, structural work and construction projects.',
+    services: [
+      'Bricklayers',
+      'Masons',
+      'Carpenters',
+      'Plumbers',
+      'Electricians',
+      'Welders',
+      'Steel Fixers',
+      'Roofers',
+      'POP Installers',
+      'Tilers',
+      'Painters',
+      'Plasterers',
+      'Ceiling Installers',
+      'Aluminium Fabricators',
+      'Glass Installers',
+      'Scaffolding Technicians',
+      'Concrete Workers',
+    ],
+  },
+  {
+    title: 'Interior Design and Finishing Artisans',
+    description: 'Expert craftsmanship for refined interiors, installations and finishing details.',
+    services: [
+      'Furniture Makers',
+      'Upholsterers',
+      'Cabinet Makers',
+      'Kitchen Installers',
+      'Wardrobe Installers',
+      'Wallpaper Installers',
+      '3D Wall Panel Installers',
+      'Flooring Specialists',
+      'Marble and Granite Installers',
+      'Curtain and Blind Installers',
+      'Interior Decorators',
+      'Gypsum Ceiling Specialists',
+      'Door Installers',
+    ],
+  },
+  {
+    title: 'Electrical and Mechanical Technicians',
+    description: 'Technical installation, maintenance and repair services for modern properties.',
+    services: [
+      'AC Technicians',
+      'Refrigeration Technicians',
+      'CCTV Installers',
+      'Solar Installers',
+      'Generator Technicians',
+      'Inverter Technicians',
+      'Gate Automation Technicians',
+      'Plumbing Maintenance Technicians',
+    ],
+  },
+  {
+    title: 'General Home Maintenance',
+    description: 'Reliable professionals for everyday property care, repairs and outdoor maintenance.',
+    services: [
+      'Handymen',
+      'Locksmiths',
+      'Pest Control and Fumigation Specialists',
+      'Waterproofing Specialists',
+      'Borehole Drillers',
+      'Water Treatment Technicians',
+      'Swimming Pool Technicians',
+      'Landscaping Professionals',
+      'Gardeners',
+      'Cleaning Technicians',
+    ],
+  },
+  {
+    title: 'Specialist Services',
+    description: 'Qualified specialists and built-environment professionals for complex projects.',
+    services: [
+      'POP and Screeding Specialists',
+      'Structural Engineers',
+      'Quantity Surveyors',
+      'Architects',
+      'Building Technologists',
+      'Surveyors',
+      'Civil Engineers',
+      'Interior Architects',
+    ],
+  },
 ]
 
 function SectionHeading({ eyebrow, title, description }) {
@@ -365,42 +445,82 @@ function App() {
           </div>
         </section>
 
-        <section id="artisans" className="px-6 py-20 sm:px-10 sm:py-28 lg:px-16">
-          <div className="mx-auto grid max-w-[1280px] gap-12 md:grid-cols-[0.9fr_1.1fr]">
-            <div>
-              <p className="eyebrow">Craftsmanship you can count on</p>
+                <section id="artisans" className="bg-[#f7f4ef] px-6 py-20 sm:px-10 sm:py-28 lg:px-16">
+          <div className="mx-auto max-w-[1280px]">
+            <div className="mx-auto mb-16 max-w-3xl text-center">
+              <p className="eyebrow">Craftsmanship · Construction · Property Care</p>
               <h2 className="section-title">
-                The right hands
+                ARTISANS & PROPERTY
                 <br />
-                for every <span className="italic text-[#a18455]">detail.</span>
+                <span className="italic text-[#a18455]">MAINTENANCE SERVICES</span>
               </h2>
-              <p className="mt-6 max-w-lg text-sm leading-7 text-[#716d67] sm:text-base sm:leading-8">
-                Need help bringing a project together or taking care of a repair?
-                Contact our team to discuss your needs and arrange an appropriate
-                artisan service.
+              <p className="mx-auto mt-7 max-w-2xl text-sm leading-7 text-[#716d67] sm:text-base sm:leading-8">
+                We provide access to skilled, experienced and reliable artisans for
+                residential and commercial projects, including construction,
+                renovation, repairs, installations and interior finishing.
               </p>
-              <button onClick={() => enquire('help finding an artisan for my project')} className="gold-button mt-8">
-                Request an Artisan <FaArrowRight size={13} />
+              <button
+                onClick={() => enquire('artisans and property maintenance services')}
+                className="gold-button mt-8"
+              >
+                Request a Professional <FaArrowRight size={13} />
               </button>
             </div>
 
-            <div className="divide-y divide-black/10 border-y border-black/10">
-              {artisans.map((artisan, index) => (
-                <button
-                  key={artisan}
-                  onClick={() => enquire(artisan)}
-                  className="group flex w-full items-center justify-between gap-4 py-5 text-left"
+            <div className="grid gap-6 lg:grid-cols-2">
+              {artisanCategories.map((category, index) => (
+                <motion.div
+                  key={category.title}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.1 }}
+                  transition={{ duration: 0.5, delay: index * 0.06 }}
+                  className="border border-black/10 bg-white p-6 shadow-[0_12px_40px_rgba(0,0,0,0.035)] sm:p-8"
                 >
-                  <span className="flex items-center gap-5">
-                    <span className="text-xs text-[#a18455]">0{index + 1}</span>
-                    <span className="font-serif text-xl transition group-hover:translate-x-1 sm:text-2xl">{artisan}</span>
-                  </span>
-                  <FaArrowRight className="shrink-0 text-sm text-[#a18455] transition group-hover:translate-x-1" />
-                </button>
+                  <div className="mb-6 flex items-start gap-4">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#a18455]/40 font-serif text-lg text-[#a18455]">
+                      0{index + 1}
+                    </span>
+                    <div>
+                      <h3 className="font-serif text-xl leading-snug text-[#171714] sm:text-2xl">
+                        {category.title}
+                      </h3>
+                      <p className="mt-2 text-xs leading-6 text-[#8a857e] sm:text-sm">
+                        {category.description}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+                    {category.services.map((service) => (
+                      <button
+                        key={service}
+                        onClick={() => enquire(service)}
+                        className="group flex min-h-11 items-center justify-between gap-3 border-b border-black/5 py-2.5 text-left text-sm text-[#514d47] transition hover:border-[#a18455]/50 hover:text-[#a18455]"
+                      >
+                        <span>{service}</span>
+                        <FaArrowRight className="shrink-0 text-[11px] text-[#a18455] opacity-60 transition group-hover:translate-x-1 group-hover:opacity-100" />
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
               ))}
-              <p className="pt-4 text-xs leading-5 text-[#8a857e]">
-                Contact us to confirm service availability, location, and scheduling.
+            </div>
+
+            <div className="mt-12 border border-[#a18455]/30 bg-white px-6 py-8 text-center sm:px-10">
+              <p className="font-serif text-xl text-[#171714] sm:text-2xl">
+                The right professionals for every project.
               </p>
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-[#716d67]">
+                Contact our team to discuss your project requirements, service
+                availability, location and scheduling.
+              </p>
+              <button
+                onClick={() => enquire('a construction, renovation or property maintenance project')}
+                className="gold-button mt-6"
+              >
+                Discuss Your Project <FaArrowRight size={13} />
+              </button>
             </div>
           </div>
         </section>
@@ -489,5 +609,6 @@ function App() {
 }
 
 export default App
+
 
 
