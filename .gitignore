@@ -32,3 +32,4 @@ dist-ssr
 *.bak
 *.backup
 *.whatsapp-debug-backup
+.vercel

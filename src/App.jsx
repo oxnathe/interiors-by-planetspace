@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import {
   FaArrowRight,
@@ -58,6 +58,7 @@ const projects = [
 const artisanCategories = [
   {
     title: 'Building and Construction Artisans',
+    image: '/images/artisans/construction.jpg',
     description: 'Skilled professionals for building, structural work and construction projects.',
     services: [
       'Bricklayers',
@@ -81,6 +82,7 @@ const artisanCategories = [
   },
   {
     title: 'Interior Design and Finishing Artisans',
+    image: '/images/artisans/interior-finishing.jpg',
     description: 'Expert craftsmanship for refined interiors, installations and finishing details.',
     services: [
       'Furniture Makers',
@@ -100,6 +102,7 @@ const artisanCategories = [
   },
   {
     title: 'Electrical and Mechanical Technicians',
+    image: '/images/artisans/electrical-mechanical.jpg',
     description: 'Technical installation, maintenance and repair services for modern properties.',
     services: [
       'AC Technicians',
@@ -114,6 +117,7 @@ const artisanCategories = [
   },
   {
     title: 'General Home Maintenance',
+    image: '/images/artisans/home-maintenance.jpg',
     description: 'Reliable professionals for everyday property care, repairs and outdoor maintenance.',
     services: [
       'Handymen',
@@ -130,6 +134,7 @@ const artisanCategories = [
   },
   {
     title: 'Specialist Services',
+    image: '/images/artisans/specialist-services.jpg',
     description: 'Qualified specialists and built-environment professionals for complex projects.',
     services: [
       'POP and Screeding Specialists',
@@ -178,15 +183,11 @@ function App() {
       <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-10">
         <nav className="glass-nav mx-auto flex max-w-[1440px] items-center justify-between rounded-2xl px-5 py-4 sm:px-7">
           <a href="#home" className="group flex items-center gap-3" aria-label="Interiors by PlanetSpace home">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full border border-[#a18455]/60 font-serif text-xl text-[#a18455]">
-              P
-            </span>
-            <span className="leading-tight">
-              <span className="block font-serif text-base tracking-wide sm:text-lg">PLANETSPACE</span>
-              <span className="mt-1 block text-[8px] tracking-[0.34em] text-[#8e7043] sm:text-[9px]">
-                INTERIORS
-              </span>
-            </span>
+            <img
+              src="/images/logo.png"
+              alt="Interiors by PlanetSpace"
+              className="h-10 w-auto max-w-[190px] object-contain"
+            />
           </a>
 
           <div className="hidden items-center gap-7 lg:flex">
@@ -266,28 +267,32 @@ function App() {
             >
               <p className="mb-6 flex items-center gap-3 text-[10px] uppercase tracking-[0.3em] text-[#e2c99e] sm:text-xs">
                 <span className="h-px w-10 bg-[#c2a16c]" />
-                A considered approach to living
+                Interior Design · Artisan Services · Property Care
               </p>
 
               <h1 className="font-serif text-5xl font-normal leading-[1.08] tracking-[-0.035em] text-white sm:text-6xl md:text-7xl lg:text-[88px]">
                 Spaces that
                 <br />
-                inspire. <span className="italic text-[#e2c99e]">Interiors</span>
+                <span className="italic text-[#e2c99e]">inspire.</span>
                 <br />
-                that define you.
+                Craftsmanship that lasts.
               </h1>
 
               <p className="mt-7 max-w-lg text-sm leading-7 text-white/80 sm:text-base sm:leading-8">
-                Thoughtfully designed interiors, bespoke furniture, and skilled
-                craftsmanship for spaces that feel unmistakably yours.
+                From interior design and bespoke furniture to construction,
+                skilled artisan work, installations, repairs and property
+                maintenance, we bring every detail of your space together.
               </p>
 
               <div className="mt-9 flex flex-wrap items-center gap-4">
-                <button onClick={() => enquire('an interior design project')} className="gold-button">
-                  Start Your Project <FaArrowRight size={13} />
+                <button
+                  onClick={() => enquire('an interior design project')}
+                  className="gold-button"
+                >
+                  Explore Interior Design <FaArrowRight size={13} />
                 </button>
-                <a href="#portfolio" className="outline-button">
-                  Discover Our Work
+                <a href="#artisans" className="outline-button">
+                  Explore Artisan Services
                 </a>
               </div>
             </motion.div>
@@ -346,7 +351,8 @@ function App() {
                 >
                   <button onClick={() => enquire(service.title)} className="block w-full text-left">
                     <div className="image-frame aspect-[4/4.7]">
-                      <img src={service.image} alt={service.title} loading="lazy" />
+                      <img src={service.image} alt={service.title} loading="lazy"
+                      decoding="async" />
                       <span className="image-action"><FaArrowUpRightFromSquare /></span>
                     </div>
                     <div className="flex items-start justify-between gap-4 pt-5">
@@ -387,7 +393,8 @@ function App() {
                   className={`project-card group text-left ${index === 0 ? 'md:row-span-2' : ''}`}
                 >
                   <div className={`image-frame ${index === 0 ? 'aspect-[4/5]' : 'aspect-[5/2.8]'}`}>
-                    <img src={project.image} alt={project.title} loading="lazy" />
+                    <img src={project.image} alt={project.title} loading="lazy"
+                      decoding="async" />
                     <div className="project-overlay">
                       <div>
                         <p className="text-[10px] uppercase tracking-[0.2em] text-[#e2c99e]">{project.category}</p>
@@ -440,6 +447,7 @@ function App() {
                 src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=75"
                 alt="Contemporary sofa in a carefully styled living room"
                 loading="lazy"
+                      decoding="async"
               />
             </div>
           </div>
@@ -477,6 +485,16 @@ function App() {
                   transition={{ duration: 0.5, delay: index * 0.06 }}
                   className="border border-black/10 bg-white p-6 shadow-[0_12px_40px_rgba(0,0,0,0.035)] sm:p-8"
                 >
+                  <div className="mb-6 aspect-[16/9] overflow-hidden bg-[#eae3d8]">
+                    <img
+                      src={category.image}
+                      alt={`${category.title} professionals at work`}
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+
                   <div className="mb-6 flex items-start gap-4">
                     <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-[#a18455]/40 font-serif text-lg text-[#a18455]">
                       0{index + 1}
@@ -491,18 +509,27 @@ function App() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
-                    {category.services.map((service) => (
-                      <button
-                        key={service}
-                        onClick={() => enquire(service)}
-                        className="group flex min-h-11 items-center justify-between gap-3 border-b border-black/5 py-2.5 text-left text-sm text-[#514d47] transition hover:border-[#a18455]/50 hover:text-[#a18455]"
-                      >
-                        <span>{service}</span>
-                        <FaArrowRight className="shrink-0 text-[11px] text-[#a18455] opacity-60 transition group-hover:translate-x-1 group-hover:opacity-100" />
-                      </button>
-                    ))}
-                  </div>
+                  <details className="group border-t border-[#a18455]/20 pt-4">
+                    <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-medium text-[#a18455] transition hover:text-[#80633d] [&::-webkit-details-marker]:hidden">
+                      <span>View {category.services.length} services</span>
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#a18455]/30 text-lg transition-transform duration-300 group-open:rotate-180">
+                        ⌄
+                      </span>
+                    </summary>
+
+                    <div className="grid grid-cols-1 gap-2 pt-4 sm:grid-cols-2">
+                      {category.services.map((service) => (
+                        <button
+                          key={service}
+                          onClick={() => enquire(service)}
+                          className="group flex min-h-11 items-center justify-between gap-3 border-b border-black/5 py-2.5 text-left text-sm text-[#514d47] transition hover:border-[#a18455]/50 hover:text-[#a18455]"
+                        >
+                          <span>{service}</span>
+                          <FaArrowRight className="shrink-0 text-[11px] text-[#a18455] opacity-60 transition group-hover:translate-x-1 group-hover:opacity-100" />
+                        </button>
+                      ))}
+                    </div>
+                  </details>
                 </motion.div>
               ))}
             </div>
@@ -548,12 +575,12 @@ function App() {
         <div className="mx-auto max-w-[1280px]">
           <div className="grid gap-12 pb-12 sm:grid-cols-2 lg:grid-cols-4">
             <div className="sm:col-span-2">
-              <a href="#home" className="inline-flex items-center gap-3">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full border border-[#a18455]/60 font-serif text-xl text-[#d4b783]">P</span>
-                <span>
-                  <span className="block font-serif text-lg tracking-wide">PLANETSPACE</span>
-                  <span className="mt-1 block text-[9px] tracking-[0.34em] text-[#d4b783]">INTERIORS</span>
-                </span>
+              <a href="#home" className="inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-white/35 via-[#d4b783]/25 to-white/10 px-5 py-4 shadow-[0_0_55px_rgba(212,183,131,0.28)] ring-1 ring-white/20 backdrop-blur-xl">
+                <img
+                  src="/images/logo.png"
+                  alt="Interiors by PlanetSpace"
+                  className="h-25 w-auto max-w-[280px] object-contain"
+                />
               </a>
               <p className="mt-5 max-w-sm text-sm leading-7 text-white/55">
                 Thoughtful interiors, bespoke furniture, and artisan services
@@ -609,6 +636,3 @@ function App() {
 }
 
 export default App
-
-
-
