@@ -33,3 +33,10 @@ dist-ssr
 *.backup
 *.whatsapp-debug-backup
 .vercel
+
+# Local project backups and image previews
+src/App.backup-*.jsx
+src/App.jsx.backup-*
+public/images/artisans/*-backup-*
+public/images/artisans/*-before-crop-*
+public/images/artisans/*-preview.*
